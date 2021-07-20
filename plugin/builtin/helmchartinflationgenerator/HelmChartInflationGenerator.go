@@ -288,6 +288,18 @@ func (p *HelmChartInflationGeneratorPlugin) templateCommand() []string {
 	if p.IncludeCRDs {
 		args = append(args, "--include-crds")
 	}
+	if p.SkipTests {
+		args = append(args, "--skip-tests")
+	}
+	if len(p.APIVersions) > 0 {
+		args = append(args, "--api-versions", strings.Join(p.APIVersions, ","))
+	}
+	if p.KubeVersion != "" {
+		args = append(args, "--kube-version", p.KubeVersion)
+	}
+	if len(p.ExtraArgs) > 0 {
+		args = append(args, p.ExtraArgs...)
+	}
 	return args
 }
 

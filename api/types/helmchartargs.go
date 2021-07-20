@@ -72,6 +72,19 @@ type HelmChart struct {
 	// IncludeCRDs specifies if Helm should also generate CustomResourceDefinitions.
 	// Defaults to 'false'.
 	IncludeCRDs bool `json:"includeCRDs,omitempty" yaml:"includeCRDs,omitempty"`
+
+	// SkipTests specifies if Helm should skip tests.
+	// Defaults to 'false'.
+	SkipTests bool `json:"skipTests,omitempty" yaml:"skipTests,omitempty"`
+
+	// APIVersions specifies Kubernetes api versions used for Capabilities.APIVersions.
+	APIVersions []string `json:"apiVersions,omitempty" yaml:"apiVersions,omitempty"`
+
+	// APIVersions specifies Kubernetes version used for Capabilities.KubeVersion.
+	KubeVersion string `json:"kubeVersion,omitempty" yaml:"kubeVersion,omitempty"`
+
+	// ExtraArgs specifies additional arguments to pass to the helm command
+	ExtraArgs []string `json:"extraArgs,omitempty" yaml:"extraArgs,omitempty"`
 }
 
 // HelmChartArgs contains arguments to helm.
